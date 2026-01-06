@@ -3486,6 +3486,7 @@ import {
 <template>
   <div>
     <h5>Primary</h5>
+    <el-button>Default</el-button>
     <el-button type="primary">ok</el-button>
     <el-button type="primary">Primary</el-button>
     <el-button type="primary" disabled>Disabled</el-button>
@@ -10998,6 +10999,11 @@ Note, date time locale (month name, first day of the week ...) are also configur
 | Name                         | Description                                                                                                                           | Type                                                                                                                                                           | Default                            |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | model-value / v-model        | binding value, if it is an `range` picker, the length of the array should be 2                                                        | ^[number] / ^[string] / ^[Date] / ^[array]`number[] \| string[] \| Date[]`                                                                                     | ''                                 |
+| cycle                        | DatePicker for 'ap' page                                                                                                              | ^[number]                                                                                                                                                      | 0                                  |
+| settDefaultDate              | DatePicker for 'ap' page                                                                                                              | ^[boolean]                                                                                                                                                     | —                                  |
+| cycleType                    | add DatePicker type 'custom' and 'week'                                                                                               | ^[string]                                                                                                                                                      | —                                  |
+| isOk                         | whether DatePicker is confirm button                                                                                                  | ^[boolean]                                                                                                                                                     | true                               |
+| isFooter                     | whether DatePicker is footer                                                                                                          | ^[boolean]                                                                                                                                                     | false                              |
 | readonly                     | whether DatePicker is read only                                                                                                       | ^[boolean]                                                                                                                                                     | false                              |
 | disabled                     | whether DatePicker is disabled                                                                                                        | ^[boolean]                                                                                                                                                     | false                              |
 | size                         | size of Input                                                                                                                         | ^[enum]`'' \| 'large' \| 'default' \| 'small'`                                                                                                                 | —                                  |
@@ -11116,6 +11122,13 @@ type Placement =
       :shortcuts="shortcuts"
       type="date"
     />
+    <div class="demonstration mt-2">Custom Open Component</div>
+    <el-divider />
+    <el-date-picker ref="datePicker" v-model="value2" type="date">
+      <template #open>
+        <div>custom open</div>
+      </template>
+    </el-date-picker>
   </div>
 </template>
 
@@ -11744,6 +11757,8 @@ const value3 = ref('')
       <el-date-picker
         v-model="value1"
         type="daterange"
+        :cycle="7"
+        cycle-type="week"
         range-separator="To"
         start-placeholder="Start date"
         end-placeholder="End date"
@@ -16882,17 +16897,44 @@ function onSubmit() {
     label-width="auto"
   >
     <el-form-item label="Activity name" prop="name" pre-star>
-      <el-input v-model="ruleForm.name" pre-star />
+      <el-autocomplete
+        v-model="ruleForm.name"
+        placeholder="text"
+      ></el-autocomplete>
     </el-form-item>
+    <el-form-item label="Activity name" prop="name" pre-star>
+      <el-input v-model="ruleForm.name" pre-star placeholder="sss" />
+    </el-form-item>
+    <el-select
+      v-model="ruleForm.region"
+      placeholder="Activity zone"
+      multiple
+      disabled
+      fit-input-width
+    >
+      <el-option label="Zone one" value="shanghai" />
+      <el-option
+        label="Zone twoasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        value="beijing"
+      />
+    </el-select>
     <el-form-item label="Activity zone" prop="region">
-      <el-select v-model="ruleForm.region" placeholder="Activity zone" pre-star>
+      <el-select
+        v-model="ruleForm.region"
+        placeholder="Activity zone1"
+        fit-input-width
+      >
         <el-option label="Zone one" value="shanghai" />
-        <el-option label="Zone two" value="beijing" />
+        <el-option
+          label="Zone twoasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          value="beijing"
+        />
       </el-select>
     </el-form-item>
     <el-form-item label="Activity count" prop="count">
       <el-select-v2
         v-model="ruleForm.count"
+        disabled
         placeholder="Activity count"
         :options="options"
       />
@@ -16952,7 +16994,13 @@ function onSubmit() {
       </el-radio-group>
     </el-form-item>
     <el-form-item label="Activity form" prop="desc">
-      <el-input v-model="ruleForm.desc" type="textarea" />
+      <el-input
+        v-model="ruleForm.desc"
+        type="textarea"
+        placeholder="test"
+        pre-star
+        :rows="8"
+      />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm(ruleFormRef)">
@@ -16983,7 +17031,7 @@ interface RuleForm {
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
-  name: '',
+  name: 'ssssds',
   region: '',
   count: '',
   date1: '',
@@ -18969,7 +19017,12 @@ const textarea2 = ref('')
 ### basic.vue
 ```vue
 <template>
-  <el-input v-model="input" style="width: 240px" placeholder="Please input" />
+  <el-input
+    v-model="input"
+    style="width: 240px"
+    placeholder="Please input"
+    :float-label="false"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -18986,6 +19039,15 @@ const input = ref('')
   <h5>Width Header</h5>
   <el-divider />
   <div class="flex flex-wrap gap-4 items-center">
+    <el-input
+      v-model="input6"
+      disabled
+      style="width: 240px"
+      placeholder="Please Input"
+      pre-star
+      :prefix-icon="Search"
+      clearable
+    />
     <el-input
       v-model="input5"
       style="width: 240px"
@@ -19133,6 +19195,7 @@ import {
 
 const input = ref('')
 const input5 = ref('')
+const input6 = ref(0)
 const textarea1 = ref('Hello')
 const textarea2 = ref()
 const textarea3 = ref('Hello')
@@ -20035,7 +20098,7 @@ Link with icon
 | Name      | Description                         | Type                                                                            | Default |
 | --------- | ----------------------------------- | ------------------------------------------------------------------------------- | ------- |
 | type      | type                                | ^[enum]`'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'default'` | default |
-| underline | when underlines should appear       | ^[enum]`'always' \| 'hover' \| 'never' \| boolean`                              | hover   |
+| underline | when underlines should appear       | ^[enum]`'always' \| 'hover' \| 'never' \| boolean`                              | always  |
 | disabled  | whether the component is disabled   | ^[boolean]                                                                      | false   |
 | href      | same as native hyperlink's `href`   | ^[string]                                                                       | —       |
 | target    | same as native hyperlink's `target` | ^[enum]`'_blank' \| '_parent' \| '_self' \| '_top'`                             | \_self  |
@@ -22319,6 +22382,7 @@ const openVn = () => {
       h('span', null, 'Message can be '),
       h('i', { style: 'color: teal' }, 'VNode'),
     ]),
+    duration: 9999999,
   })
 }
 </script>
@@ -26894,6 +26958,8 @@ const options = Array.from({ length: 1000 }).map((_, idx) => ({
   <el-select-v2
     v-model="value"
     :options="options"
+    filterable
+    add-show-tip="test"
     placeholder="Please select"
     style="width: 240px"
   />
@@ -28105,6 +28171,9 @@ You can customize label.
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | model-value / v-model           | binding value                                                                                                                            | ^[string] / ^[number] / ^[boolean] / ^[object] / ^[array]                                                                                                                   | —                                              |
 | multiple                        | whether multiple-select is activated                                                                                                     | ^[boolean]                                                                                                                                                                  | false                                          |
+| pre-star                        | whether select is required                                                                                                               | ^[boolean]                                                                                                                                                                  | false                                          |
+| add-item                        | whether select can add new item                                                                                                          | ^[boolean]                                                                                                                                                                  | false                                          |
+| add-show-tip                    | whether select add tip                                                                                                                   | ^[string]                                                                                                                                                                   | —                                              |
 | options ^(2.10.5)               | data of the options, the key of `value` and `label` and `disabled` can be customize by `props`                                           | ^[array]`Array<{[key: string]: any}>`                                                                                                                                       | —                                              |
 | [props](#props) ^(2.10.5)       | configuration options                                                                                                                    | ^[object]                                                                                                                                                                   | —                                              |
 | disabled                        | whether Select is disabled                                                                                                               | ^[boolean]                                                                                                                                                                  | false                                          |
@@ -28172,6 +28241,7 @@ You can customize label.
 | Name                  | Description                                                   | Type                                                                |
 | --------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- |
 | change                | triggers when the selected value changes                      | ^[Function]`(value: any) => void`                                   |
+| add-item              | triggers when the selecte add new item                        | ^[Function]`(value: string) => void`                                |
 | visible-change        | triggers when the dropdown appears/disappears                 | ^[Function]`(visible: boolean) => void`                             |
 | remove-tag            | triggers when a tag is removed in multiple mode               | ^[Function]`(tagValue: any) => void`                                |
 | clear                 | triggers when the clear icon is clicked in a clearable Select | ^[Function]`() => void`                                             |
@@ -28328,7 +28398,41 @@ const options = [
   <div class="flex flex-wrap gap-4 items-center">
     <el-select
       v-model="value"
-      :float-label="false"
+      clearable
+      pre-star
+      placeholder="Please Select"
+      label="label1"
+      filterable
+      add-item
+      add-show-tip="test"
+      style="width: 240px"
+      @add-item="handleAdd"
+    >
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
+    <el-select
+      v-model="value"
+      clearable
+      pre-star
+      filterable
+      placeholder="Please Select"
+      label="label1"
+      style="width: 240px"
+    >
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
+    <el-select
+      v-model="value"
       clearable
       pre-star
       placeholder="Please Select"
@@ -28524,7 +28628,7 @@ const toggleOption = (value) => {
     selectedOptions.value.push(value)
   }
 }
-const options = [
+const options = ref([
   {
     value: 'Option1',
     label: 'Option1',
@@ -28545,7 +28649,7 @@ const options = [
     value: 'Option5',
     label: 'Option5',
   },
-]
+])
 const options2 = [
   {
     label: 'Popular cities',
@@ -28582,6 +28686,12 @@ const options2 = [
     ],
   },
 ]
+const handleAdd = (val: string) => {
+  options.value.push({
+    value: val,
+    label: val,
+  })
+}
 </script>
 
 <style scoped>
@@ -35559,6 +35669,7 @@ const tableColumns = ref<any[]>([
     prop: 'age',
     label: 'Age',
     width: '120',
+    resizable: false,
     sortable: true,
   },
   {
@@ -40145,7 +40256,7 @@ const visible = ref(false)
   <el-tooltip placement="bottom" effect="light" trigger="click">
     <template #content>
       test button
-      <el-button plain size="small">Ctrl</el-button>
+      <el-button plain size="small" class="ctrl">Ctrl</el-button>
       <el-button plain size="small">A</el-button>
     </template>
     <el-button>Button</el-button>
@@ -40156,13 +40267,16 @@ const visible = ref(false)
 </template>
 
 <script setup lang="ts"></script>
+
 <style>
 .el-popper.is-customized {
   /* Set padding to ensure the height is 32px */
   padding: 6px 12px;
   background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
 }
-
+.ctrl {
+  margin-left: 16px;
+}
 .el-popper.is-customized .el-popper__arrow::before {
   background: linear-gradient(45deg, #b2e68d, #bce689);
   right: 0;
