@@ -4,13 +4,6 @@
 
 ## Documentation
 
-- [Dark Mode](https://element-plus.org/en-US/guide/dark-mode)
-- [Design Disciplines](https://element-plus.org/en-US/guide/design)
-- [Installation](https://element-plus.org/en-US/guide/installation)
-- [Custom namespace](https://element-plus.org/en-US/guide/namespace)
-- [Navigation](https://element-plus.org/en-US/guide/nav)
-- [Quick Start](https://element-plus.org/en-US/guide/quickstart)
-- [Custom theme](https://element-plus.org/en-US/guide/theming)
 - [Affix](https://element-plus.org/en-US/component/affix)
 - [Alert](https://element-plus.org/en-US/component/alert)
 - [Anchor](https://element-plus.org/en-US/component/anchor)
@@ -93,3 +86,10 @@
 - [Typography](https://element-plus.org/en-US/component/typography)
 - [Upload](https://element-plus.org/en-US/component/upload)
 - [Watermark](https://element-plus.org/en-US/component/watermark)
+- [Dark Mode](https://element-plus.org/en-US/guide/dark-mode)
+- [Design Disciplines](https://element-plus.org/en-US/guide/design)
+- [Installation](https://element-plus.org/en-US/guide/installation)
+- [Custom namespace](https://element-plus.org/en-US/guide/namespace)
+- [Navigation](https://element-plus.org/en-US/guide/nav)
+- [Quick Start](https://element-plus.org/en-US/guide/quickstart)
+- [Custom theme](https://element-plus.org/en-US/guide/theming)
