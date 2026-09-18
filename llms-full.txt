@@ -3275,10 +3275,49 @@ URL: https://element-plus.org/en-US/component/button
 
 Commonly used button.
 
-## Demo
+## Sizes
+
+Button provides `large`, `default`, and `small` sizes.
+
+
+
+## Types
+
+
+
+## Button States
+
+### Loading
+
+
+
+### Disabled
+
+
+
+## Buttons with Icons
 
 For icon button, please add class name `icon-button`
 
+
+
+## Button with Checkbox (Legacy)
+
+
+
+## Button Tag
+
+
+
+## Best Practices
+
+- Use Button for actions, and choose a label that clearly describes the result of the action.
+- Choose an existing `type` that matches the action's purpose and semantic status.
+- Use the existing `loading` state while an action is in progress, and use `disabled` when the action is unavailable.
+- For icon-only buttons, use the existing `icon-button` class and provide an accessible name appropriate to the action.
+- Use Button Tag for the existing status or tag-style pattern; do not treat it as a replacement for every rounded button.
+
+## API Reference
 
 ### Button Attributes
 
@@ -3327,16 +3366,16 @@ For icon button, please add class name `icon-button`
 | disabled       | button disabled      | ^[object]`ComputedRef<boolean>`                                                                                |
 | shouldAddSpace | whether adding space | ^[object]`ComputedRef<boolean>`                                                                                |
 
-## ButtonGroup API
+### ButtonGroup API
 
-### ButtonGroup Attributes
+#### ButtonGroup Attributes
 
 | Name | Description                                      | Type                                                               | Default |
 | ---- | ------------------------------------------------ | ------------------------------------------------------------------ | ------- |
 | size | control the size of buttons in this button-group | ^[enum]`'large' \| 'default' \| 'small'`                           | —       |
 | type | control the type of buttons in this button-group | ^[enum]`'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | —       |
 
-### ButtonGroup Slots
+#### ButtonGroup Slots
 
 | Name    | Description                    | Subtags |
 | ------- | ------------------------------ | ------- |
@@ -3418,162 +3457,13 @@ import {
 
 ```
 
-### beyond.vue
+### beyond-button-tag.vue
 ```vue
 <template>
   <div>
-    <h5>Primary</h5>
-    <el-button>Default</el-button>
-    <el-button type="primary">ok</el-button>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="primary" disabled>Disabled</el-button>
-    <el-button type="primary" loading>Loading</el-button>
-    <el-button type="primary" :icon="Edit">Loading</el-button>
-    <el-button type="primary" :icon="Edit" disabled>Loading</el-button>
-    <el-button type="primary">
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="primary" disabled>
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="primary" :icon="Delete" disabled class="icon-button" />
-    <el-button type="primary" :icon="Delete" class="icon-button" />
-    <el-divider />
-  </div>
-  <div>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-    <el-button type="error">Error</el-button>
-    <el-button type="filled">Filled</el-button>
-  </div>
-  <el-divider />
-  <div>
-    <h5>Outlined</h5>
-    <el-button plain>Outlined</el-button>
-    <el-button plain disabled>Disabled</el-button>
-    <el-button plain class="active">Active</el-button>
-    <el-button plain loading>Loading</el-button>
-    <el-button plain :icon="Edit">Loading</el-button>
-    <el-button plain :icon="Edit" disabled>Loading</el-button>
-    <el-button plain>
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button plain disabled>
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button plain>
-      <el-checkbox label="Label" />
-    </el-button>
-    <el-button plain disabled>
-      <el-checkbox disabled label="Label" />
-    </el-button>
-    <el-button plain :icon="Delete" disabled class="icon-button" />
-    <el-button plain :icon="Delete" class="icon-button" />
-    <el-divider />
-  </div>
-
-  <div>
-    <h5>Filled Tonal</h5>
-    <el-button type="filled">Filled</el-button>
-    <el-button type="filled" disabled>Disabled</el-button>
-    <el-button type="filled" loading>Loading</el-button>
-    <el-button type="filled" :icon="Edit">Loading</el-button>
-    <el-button type="filled" :icon="Edit" disabled>Loading</el-button>
-    <el-button type="filled">
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="filled" disabled>
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="filled">
-      <el-checkbox label="Label" />
-    </el-button>
-    <el-button type="filled" disabled>
-      <el-checkbox disabled label="Label" />
-    </el-button>
-    <el-button type="filled" :icon="Delete" disabled class="icon-button" />
-    <el-button type="filled" :icon="Delete" class="icon-button" />
-    <el-divider />
-  </div>
-
-  <div>
-    <h5>Text</h5>
-    <el-button type="text">Text</el-button>
-    <el-button type="text" disabled>Disabled</el-button>
-    <el-button type="text" class="active">Active</el-button>
-    <el-button type="text" loading>Loading</el-button>
-    <el-button type="text" :icon="Edit">Loading</el-button>
-    <el-button type="text" :icon="Edit" disabled>Loading</el-button>
-    <el-button type="text">
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="text" disabled>
-      Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button type="text">
-      <el-checkbox label="Label" />
-    </el-button>
-    <el-button type="text" disabled>
-      <el-checkbox disabled label="Label" />
-    </el-button>
-    <el-button type="text" :icon="Delete" disabled class="icon-button" />
-    <el-button type="text" :icon="Delete" class="icon-button" />
-    <el-divider />
-  </div>
-
-  <div>
-    <h5>Button Tag</h5>
+    <div class="demo-group-title">Enabled</div>
     <el-button class="beyond-button-tag" round :style="statusColor['-20']">
       Label
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button
-      class="beyond-button-tag"
-      round
-      disabled
-      :style="statusColor['-20']"
-    >
-      Disabled
-      <el-icon>
-        <ArrowDown />
-      </el-icon>
-    </el-button>
-    <el-button
-      class="beyond-button-tag"
-      round
-      loading
-      :style="statusColor['-99']"
-    >
-      Loading
       <el-icon>
         <ArrowDown />
       </el-icon>
@@ -3603,6 +3493,373 @@ import {
       </el-icon>
     </el-button>
   </div>
+
+  <div>
+    <div class="demo-group-title">Disabled</div>
+    <el-button
+      class="beyond-button-tag"
+      round
+      disabled
+      :style="statusColor['-20']"
+    >
+      Disabled
+      <el-icon>
+        <ArrowDown />
+      </el-icon>
+    </el-button>
+  </div>
+
+  <div>
+    <div class="demo-group-title">Loading</div>
+    <el-button
+      class="beyond-button-tag"
+      round
+      loading
+      :style="statusColor['-99']"
+    >
+      Loading
+      <el-icon>
+        <ArrowDown />
+      </el-icon>
+    </el-button>
+  </div>
+</template>
+
+<script setup>
+import { ArrowDown } from '@element-plus/icons-vue'
+
+const statusColor = {
+  '-20': {
+    backgroundColor: '#d4e4fa',
+    color: '#0d4ea6',
+    circleColor: '#186ADE',
+  },
+  1: { backgroundColor: '#e7ecef', color: '#3e5463', circleColor: '#C1CCD6' },
+  5: { backgroundColor: '#c7e8ed', color: '#09596b', circleColor: '#09596b' },
+  10: { backgroundColor: '#c7ebd1', color: '#075e45', circleColor: '#16A163' },
+  '-99': {
+    backgroundColor: '#fadcd9',
+    color: '#a1160a',
+    circleColor: '#D91F11',
+  },
+}
+</script>
+
+```
+
+### beyond-checkbox.vue
+```vue
+<template>
+  <el-button plain>
+    <el-checkbox label="Label" />
+  </el-button>
+  <el-button type="text">
+    <el-checkbox label="Label" />
+  </el-button>
+</template>
+
+```
+
+### beyond-disabled.vue
+```vue
+<template>
+  <el-button type="primary" disabled>Disabled</el-button>
+  <el-button plain disabled>Disabled</el-button>
+  <el-button type="text" disabled>Disabled</el-button>
+</template>
+
+```
+
+### beyond-icons.vue
+```vue
+<template>
+  <div>
+    <div class="demo-group-title">Prefix Icon</div>
+    <el-button type="primary" :icon="Edit">Loading</el-button>
+    <el-button plain :icon="Edit">Loading</el-button>
+    <el-button type="text" :icon="Edit">Loading</el-button>
+  </div>
+
+  <div>
+    <div class="demo-group-title">Suffix Icon</div>
+    <el-button type="primary">
+      Label
+      <el-icon>
+        <ArrowDown />
+      </el-icon>
+    </el-button>
+    <el-button plain>
+      Label
+      <el-icon>
+        <ArrowDown />
+      </el-icon>
+    </el-button>
+    <el-button type="text">
+      Label
+      <el-icon>
+        <ArrowDown />
+      </el-icon>
+    </el-button>
+  </div>
+
+  <div>
+    <div class="demo-group-title">Icon Button</div>
+    <el-button type="primary" :icon="Delete" class="icon-button" />
+    <el-button plain :icon="Delete" class="icon-button" />
+    <el-button type="text" :icon="Delete" class="icon-button" />
+  </div>
+</template>
+
+<script setup>
+import { ArrowDown, Delete, Edit } from '@element-plus/icons-vue'
+</script>
+
+```
+
+### beyond-loading.vue
+```vue
+<template>
+  <el-button type="primary" loading>Loading</el-button>
+  <el-button plain loading>Loading</el-button>
+  <el-button type="text" loading>Loading</el-button>
+</template>
+
+```
+
+### beyond-sizes.vue
+```vue
+<template>
+  <el-button type="primary" size="large">Large</el-button>
+  <el-button type="primary">Default</el-button>
+  <el-button type="primary" size="small">Small</el-button>
+</template>
+
+```
+
+### beyond-types.vue
+```vue
+<template>
+  <el-button type="primary">Primary</el-button>
+  <el-button type="filled">Filled Tonal</el-button>
+  <el-button plain>Outlined</el-button>
+  <el-button type="text">Text</el-button>
+</template>
+
+```
+
+### beyond.vue
+```vue
+<template>
+  <section>
+    <div class="demo-group-title">Button Types</div>
+
+    <div>
+      <div class="demo-group-title">Primary</div>
+      <el-button type="primary">ok</el-button>
+      <el-button type="primary">Primary</el-button>
+    </div>
+
+    <el-divider />
+
+    <div>
+      <div class="demo-group-title">Semantic Button Types</div>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
+      <el-button type="error">Error</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Outlined</div>
+      <el-button plain>Outlined</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Text</div>
+      <el-button type="text">Text</el-button>
+    </div>
+
+    <el-divider />
+  </section>
+
+  <section>
+    <div class="demo-group-title">Button States</div>
+
+    <div>
+      <div class="demo-group-title">Default</div>
+      <el-button>Default</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Active</div>
+      <el-button plain class="active">Active</el-button>
+      <el-button type="text" class="active">Active</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Disabled</div>
+      <el-button type="primary" disabled>Disabled</el-button>
+      <el-button plain disabled>Disabled</el-button>
+      <el-button type="text" disabled>Disabled</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Loading</div>
+      <el-button type="primary" loading>Loading</el-button>
+      <el-button plain loading>Loading</el-button>
+      <el-button type="text" loading>Loading</el-button>
+    </div>
+
+    <el-divider />
+  </section>
+
+  <section>
+    <div class="demo-group-title">Buttons with Icons</div>
+
+    <div>
+      <div class="demo-group-title">Button with Icon</div>
+      <el-button type="primary" :icon="Edit">Loading</el-button>
+      <el-button type="primary" :icon="Edit" disabled>Loading</el-button>
+      <el-button plain :icon="Edit">Loading</el-button>
+      <el-button plain :icon="Edit" disabled>Loading</el-button>
+      <el-button type="text" :icon="Edit">Loading</el-button>
+      <el-button type="text" :icon="Edit" disabled>Loading</el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Dropdown Icon</div>
+      <el-button type="primary">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button type="primary" disabled>
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button plain>
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button plain disabled>
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button type="text">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button type="text" disabled>
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+    </div>
+
+    <div>
+      <div class="demo-group-title">Icon Button</div>
+      <el-button type="primary" :icon="Delete" disabled class="icon-button" />
+      <el-button type="primary" :icon="Delete" class="icon-button" />
+      <el-button plain :icon="Delete" disabled class="icon-button" />
+      <el-button plain :icon="Delete" class="icon-button" />
+      <el-button type="text" :icon="Delete" disabled class="icon-button" />
+      <el-button type="text" :icon="Delete" class="icon-button" />
+    </div>
+
+    <el-divider />
+  </section>
+
+  <section>
+    <div class="demo-group-title">Button with Checkbox</div>
+
+    <div>
+      <el-button plain>
+        <el-checkbox label="Label" />
+      </el-button>
+      <el-button plain disabled>
+        <el-checkbox disabled label="Label" />
+      </el-button>
+      <el-button type="text">
+        <el-checkbox label="Label" />
+      </el-button>
+      <el-button type="text" disabled>
+        <el-checkbox disabled label="Label" />
+      </el-button>
+    </div>
+
+    <el-divider />
+  </section>
+
+  <section>
+    <div class="demo-group-title">Button Tag</div>
+
+    <div>
+      <el-button class="beyond-button-tag" round :style="statusColor['-20']">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button
+        class="beyond-button-tag"
+        round
+        disabled
+        :style="statusColor['-20']"
+      >
+        Disabled
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button
+        class="beyond-button-tag"
+        round
+        loading
+        :style="statusColor['-99']"
+      >
+        Loading
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button class="beyond-button-tag" round :style="statusColor[1]">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button class="beyond-button-tag" round :style="statusColor[5]">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button class="beyond-button-tag" round :style="statusColor[10]">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+      <el-button class="beyond-button-tag" round :style="statusColor['-99']">
+        Label
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
+      </el-button>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -11072,7 +11329,7 @@ type Placement =
         </div>
       </div>
     </el-popover>
-    <h2>Date Range</h2>
+    <div class="demo-group-title">Date Range</div>
     <p>{{ rangeValue }}</p>
     <el-button @click="handleClose">Close Date</el-button>
     <el-date-picker
@@ -18246,6 +18503,117 @@ const load = () => {
 
 
 ---
+Title: Input Down
+URL: https://element-plus.org/en-US/component/input-down
+---
+
+# Input Down
+
+Input Down combines a free-text input with a filterable single-select dropdown.
+
+## Basic Usage
+
+Typing filters the available options. Clicking an option fills its value into the input. If no option is clicked, the typed text remains the component value after blur. When the current input value matches an option value, that option is shown as selected when the dropdown opens again.
+
+
+
+## API
+
+### Attributes
+
+| Name                  | Description                                      | Type                                          | Default        |
+| --------------------- | ------------------------------------------------ | --------------------------------------------- | -------------- |
+| model-value / v-model | input value                                      | ^[string] / ^[number]                         | `''`           |
+| options               | dropdown options                                 | ^[array]`InputDownOption[]`                   | `[]`           |
+| value-key             | option key filled into the input                 | ^[string]                                     | `value`        |
+| label-key             | option key displayed in the dropdown             | ^[string]                                     | `label`        |
+| placeholder           | input placeholder                                | ^[string]                                     | —              |
+| clearable             | whether the input can be cleared                 | ^[boolean]                                    | `true`         |
+| disabled              | whether Input Down is disabled                   | ^[boolean]                                    | `false`        |
+| placement             | dropdown placement                               | ^[enum]`'bottom-start' \| 'top-start' \| ...` | `bottom-start` |
+| teleported            | whether the dropdown is teleported to the body   | ^[boolean]                                    | `true`         |
+| append-to             | element that receives the dropdown               | ^[CSSSelector] / ^[HTMLElement]               | —              |
+| popper-class          | custom class name for the dropdown               | ^[string] / ^[object]                         | `''`           |
+| popper-style          | custom style for the dropdown                    | ^[string] / ^[object]                         | —              |
+| input props           | other supported properties are the same as Input | —                                             | —              |
+
+### Events
+
+| Name   | Description                                 | Type                                           |
+| ------ | ------------------------------------------- | ---------------------------------------------- |
+| input  | emitted while the input value changes       | ^[Function]`(value: string \| number) => void` |
+| change | emitted when the input change is committed  | ^[Function]`(value: string \| number) => void` |
+| select | emitted after a dropdown option is selected | ^[Function]`(option: InputDownOption) => void` |
+| focus  | emitted when the input receives focus       | ^[Function]`(event: FocusEvent) => void`       |
+| blur   | emitted when the input loses focus          | ^[Function]`(event: FocusEvent) => void`       |
+| clear  | emitted when the input is cleared           | ^[Function]`() => void`                        |
+
+### Slots
+
+| Name    | Description                    | Type                                                    |
+| ------- | ------------------------------ | ------------------------------------------------------- |
+| option  | custom option content          | ^[object]`{ item: InputDownOption, selected: boolean }` |
+| prefix  | input prefix content           | —                                                       |
+| suffix  | input suffix content           | —                                                       |
+| prepend | content prepended to the input | —                                                       |
+| append  | content appended to the input  | —                                                       |
+
+### Exposes
+
+| Name            | Description                    | Type                    |
+| --------------- | ------------------------------ | ----------------------- |
+| autocompleteRef | internal Autocomplete instance | `AutocompleteInstance`  |
+| focus           | focuses the input              | ^[Function]`() => void` |
+| blur            | blurs the input                | ^[Function]`() => void` |
+| close           | closes the dropdown            | ^[Function]`() => void` |
+
+## Vue Examples
+
+### basic.vue
+```vue
+<template>
+  <div class="input-down-demo">
+    <el-input-down
+      v-model="value"
+      :options="options"
+      placeholder="Enter or select a value"
+      clearable
+      @select="selected = $event.value"
+    />
+    <p>Current value: {{ value || '(empty)' }}</p>
+    <p>Last selected option: {{ selected || '(none)' }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('Dropdown Menu')
+const selected = ref('')
+const options = [
+  { label: '(None)', value: '' },
+  { label: 'Dropdown Menu', value: 'Dropdown Menu' },
+  { label: 'Dry Van', value: 'Dry Van' },
+  { label: 'Reefer', value: 'Reefer' },
+  { label: 'Flatbed', value: 'Flatbed' },
+]
+</script>
+
+<style scoped>
+.input-down-demo {
+  max-width: 480px;
+}
+
+.input-down-demo p {
+  margin: 8px 0 0;
+  color: var(--el-text-color-secondary);
+}
+</style>
+
+```
+
+
+---
 Title: Input Number
 URL: https://element-plus.org/en-US/component/input-number
 ---
@@ -19317,7 +19685,7 @@ const input = ref('')
 ### beyond.vue
 ```vue
 <template>
-  <h5>Status Input</h5>
+  <div class="demo-group-title">Status Input</div>
   <el-divider />
   <div class="flex flex-wrap gap-4 items-center">
     <el-input v-model="input" style="width: 240px" placeholder="Please input" />
@@ -19405,7 +19773,7 @@ const input = ref('')
       />
     </el-form-item>
     <el-divider />
-    <h2>Input Tag</h2>
+    <div class="demo-group-title">Input Tag</div>
     <el-input-tag
       v-model="inputTag"
       placeholder="Please input tag"
@@ -19480,7 +19848,7 @@ const input = ref('')
   </div>
 
   <el-divider />
-  <h5>Float Label Off</h5>
+  <div class="demo-group-title">Float Label Off</div>
   <el-divider />
   <el-input
     v-model="input"
@@ -19488,7 +19856,7 @@ const input = ref('')
     style="width: 240px"
     placeholder="Please input"
   />
-  <h5>Length Limit</h5>
+  <div class="demo-group-title">Length Limit</div>
   <el-divider />
   <el-input
     v-model="text"
@@ -22017,7 +22385,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
 <template>
   <el-row class="tac">
     <el-col :span="12">
-      <h5 class="mb-2">Default colors</h5>
+      <div class="demo-group-title">Default colors</div>
       <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
@@ -22056,7 +22424,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
       </el-menu>
     </el-col>
     <el-col :span="12">
-      <h5 class="mb-2">Custom colors</h5>
+      <div class="demo-group-title">Custom colors</div>
       <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
@@ -24723,6 +25091,12 @@ Popover is built with `ElTooltip`. So for some duplicated attributes, please ref
 
 
 
+## Manual control
+
+Call the exposed `show()` and `hide()` methods through the Popover instance to manually control its visibility.
+
+
+
 ## Virtual triggering
 
 Like Tooltip, Popover can be triggered by virtual elements, if your use case includes separate the triggering element and the content element, you should definitely use the mechanism, normally we use `#reference` to place our triggering element, with `triggering-element` API you can set your triggering element anywhere you like, but notice that the triggering element should be an element that accepts `mouse` and `keyboard` event.
@@ -24814,6 +25188,7 @@ complicated, you may refer to the virtual triggering for more information.
 
 | Name | Description  | Type                    |
 | ---- | ------------ | ----------------------- |
+| show | show popover | ^[Function]`() => void` |
 | hide | hide popover | ^[Function]`() => void` |
 
 ## Vue Examples
@@ -24927,6 +25302,37 @@ const popoverRef = ref<PopoverInstance>()
 const onClickOutside = () => {
   popoverRef.value?.hide()
 }
+</script>
+
+```
+
+### manual-control.vue
+```vue
+<template>
+  <el-space>
+    <el-popover
+      ref="popoverRef"
+      title="Manual control"
+      content="This popover is controlled through exposed methods."
+      placement="top"
+    >
+      <template #reference>
+        <el-button>Popover reference</el-button>
+      </template>
+    </el-popover>
+    <el-button type="primary" @click="showPopover">Show</el-button>
+    <el-button @click="hidePopover">Hide</el-button>
+  </el-space>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+import type { PopoverInstance } from 'element-plus'
+
+const popoverRef = ref<PopoverInstance>()
+const showPopover = () => popoverRef.value?.show()
+const hidePopover = () => popoverRef.value?.hide()
 </script>
 
 ```
@@ -25769,13 +26175,19 @@ const decrease = () => {
 
 
 ---
-Title: Basic usage
+Title: States
 URL: https://element-plus.org/en-US/component/radio
 ---
 
-## Basic usage
+## States
 
-Radio should not have too many options. Otherwise, use the Select component instead.
+Radio supports default, hover, focus, error, selected, and disabled states. Use the `error` attribute when a radio needs error styling. Hover or focus the enabled radios below to see their interactive states.
+
+
+
+## Radio groups with feedback
+
+Radio and RadioGroup automatically follow the error state of their containing FormItem. You can also set `error` manually to apply the state without form validation. Feedback banners remain separate from the group, so their severity can be changed independently. A warning banner does not change the radio controls themselves.
 
 
 
@@ -25789,6 +26201,7 @@ Radio should not have too many options. Otherwise, use the Select component inst
 | value ^(2.6.0)        | the value of Radio                                                     | ^[string] / ^[number] / ^[boolean]       | —       |
 | label                 | the label of Radio. If there's no `value`, `label` will act as `value` | ^[string] / ^[number] / ^[boolean]       | —       |
 | disabled              | whether Radio is disabled                                              | ^[boolean]                               | false   |
+| error                 | whether Radio is in an error state                                     | ^[boolean]                               | false   |
 | border                | whether to add a border around Radio                                   | ^[boolean]                               | false   |
 | size                  | size of the Radio                                                      | ^[enum]`'large' \| 'default' \| 'small'` | —       |
 | name                  | native `name` attribute                                                | ^[string]                                | —       |
@@ -25814,6 +26227,7 @@ Radio should not have too many options. Otherwise, use the Select component inst
 | model-value / v-model       | binding value                                                                                  | ^[string] / ^[number] / ^[boolean]                               | —                                                        |
 | size                        | the size of radio buttons or bordered radios                                                   | ^[string]                                                        | default                                                  |
 | disabled                    | whether the nesting radios are disabled                                                        | ^[boolean]                                                       | false                                                    |
+| error                       | whether the nesting radios are in an error state                                               | ^[boolean]                                                       | false                                                    |
 | validate-event              | whether to trigger form validation                                                             | ^[boolean]                                                       | true                                                     |
 | text-color                  | font color when button is active                                                               | ^[string]                                                        | #ffffff                                                  |
 | fill                        | border and background color when button is active                                              | ^[string]                                                        | #409eff                                                  |
@@ -25888,7 +26302,7 @@ Radio should not have too many options. Otherwise, use the Select component inst
     <el-radio :value="6">Option B</el-radio>
     <el-radio :value="9">Option C</el-radio>
   </el-radio-group>
-  <h2>No Label</h2>
+  <div class="demo-group-title">No Label</div>
   <el-radio :value="9"></el-radio>
 </template>
 
@@ -25917,6 +26331,74 @@ import { ref } from 'vue'
 
 const radio = ref('selected and disabled')
 </script>
+
+```
+
+### group-feedback.vue
+```vue
+<template>
+  <div class="feedback-groups">
+    <div class="feedback-group">
+      <el-alert
+        title="Error message"
+        type="error"
+        :closable="false"
+        show-icon
+      />
+      <el-radio-group v-model="errorValue" error class="vertical-group">
+        <el-radio v-for="option in options" :key="option" :value="option">
+          {{ option }}
+        </el-radio>
+      </el-radio-group>
+    </div>
+    <div class="feedback-group">
+      <el-alert
+        title="Warning message"
+        type="warning"
+        :closable="false"
+        show-icon
+      />
+      <el-radio-group v-model="warningValue" class="vertical-group">
+        <el-radio v-for="option in options" :key="option" :value="option">
+          {{ option }}
+        </el-radio>
+      </el-radio-group>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']
+const errorValue = ref('Option 2')
+const warningValue = ref('')
+</script>
+
+<style scoped>
+.feedback-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.feedback-group {
+  display: grid;
+  width: 240px;
+  gap: 12px;
+}
+
+.vertical-group {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vertical-group .el-radio {
+  margin-right: 0;
+}
+</style>
 
 ```
 
@@ -26006,6 +26488,55 @@ import { ref } from 'vue'
 
 const radio = ref(3)
 </script>
+
+```
+
+### states.vue
+```vue
+<template>
+  <div class="radio-states">
+    <div class="radio-state">
+      <span>Default</span>
+      <el-radio v-model="defaultValue" value="selected">Selected</el-radio>
+      <el-radio v-model="defaultValue" value="other">Unselected</el-radio>
+    </div>
+    <div class="radio-state">
+      <span>Error</span>
+      <el-radio v-model="errorValue" value="selected" error>Selected</el-radio>
+      <el-radio v-model="errorValue" value="other" error>Unselected</el-radio>
+    </div>
+    <div class="radio-state">
+      <span>Disabled</span>
+      <el-radio v-model="disabledValue" value="selected" disabled>
+        Selected
+      </el-radio>
+      <el-radio v-model="disabledValue" value="other" disabled>
+        Unselected
+      </el-radio>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const defaultValue = ref('selected')
+const errorValue = ref('selected')
+const disabledValue = ref('selected')
+</script>
+
+<style scoped>
+.radio-states {
+  display: grid;
+  gap: 16px;
+}
+
+.radio-state {
+  display: grid;
+  grid-template-columns: 80px repeat(2, 120px);
+  align-items: center;
+}
+</style>
 
 ```
 
@@ -29526,7 +30057,7 @@ const beforeChange = async (nextValue: string, oldValue: string) => {
 ### beyond.vue
 ```vue
 <template>
-  <h5>Base</h5>
+  <div class="demo-group-title">Base</div>
   <div class="flex flex-wrap gap-4 items-center relative">
     <el-select
       v-model="value7"
@@ -29695,7 +30226,7 @@ const beforeChange = async (nextValue: string, oldValue: string) => {
   </div>
 
   <el-divider />
-  <h5>Width Header</h5>
+  <div class="demo-group-title">Width Header</div>
   <div class="flex flex-wrap gap-4 items-center">
     <el-select
       v-model="value2"
@@ -29769,7 +30300,7 @@ const beforeChange = async (nextValue: string, oldValue: string) => {
   </div>
 
   <el-divider />
-  <h5>Select Menu</h5>
+  <div class="demo-group-title">Select Menu</div>
 
   <el-select v-model="value" placeholder="Select" style="width: 240px">
     <el-option-group
@@ -38717,6 +39248,7 @@ You can use `tooltip-formatter` to customize the tooltip content.
 | label-class-name                 | class name of the label of this column                                                                                                                                                                             | ^[string]                                                                                                                                                                   | —                                 |
 | selectable                       | function that determines if a certain row can be selected, works when `type` is 'selection'                                                                                                                        | ^[Function]`(row: any, index: number) => boolean`                                                                                                                           | —                                 |
 | reserve-selection                | whether to reserve selection after data refreshing, works when `type` is 'selection'. Note that `row-key` is required for this to work                                                                             | ^[boolean]                                                                                                                                                                  | false                             |
+| show-selection-tooltip           | whether to show `Select all on current page` or `Unselect all on current page` when hovering the header checkbox, works when `type` is 'selection'                                                                 | ^[boolean]                                                                                                                                                                  | false                             |
 | filters                          | an array of data filtering options. For each element in this array, `text` and `value` are required                                                                                                                | ^[array]`Array<{text: string, value: string}>`                                                                                                                              | —                                 |
 | filter-placement                 | placement for the filter dropdown                                                                                                                                                                                  | ^[enum]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | —                                 |
 | filter-class-name ^(2.5.0)       | className for the filter dropdown                                                                                                                                                                                  | ^[string]                                                                                                                                                                   | —                                 |
@@ -40977,6 +41509,13 @@ const tableData = [
 <template>
   <el-table :data="tableData" border style="width: 100%">
     <el-table-column
+      width="55"
+      summary="1"
+      fixed="left"
+      type="selection"
+      show-selection-tooltip
+    />
+    <el-table-column
       prop="amount"
       label="Invoice Amount"
       summary="Total: $613.50"
@@ -41021,7 +41560,12 @@ const tableData = [
     style="width: 100%"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column type="selection" :selectable="selectable" width="55" />
+    <el-table-column
+      type="selection"
+      :selectable="selectable"
+      width="55"
+      show-selection-tooltip
+    />
     <el-table-column label="Date" width="120">
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
@@ -42577,7 +43121,7 @@ const removeTab = (targetName: TabPaneName) => {
     <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
   </el-tabs>
   <el-divider />
-  <h2>Closeable tab</h2>
+  <div class="demo-group-title">Closeable tab</div>
   <el-tabs
     v-model="activeName"
     type="card"
